@@ -2,41 +2,35 @@
 import random
 
 def letters(big_string):
-    b = ''
-    a = big_string.lower()
-    for n in xrange(len(a)):
-        if a[n] != big_string[n]:
-            b += '%s' %(big_string[n])
-    return b.strip()
+    res = ''
+    low = big_string.lower()
+    zipped = zip(big_string,low)
+    for z in zipped:
+        if z[0] != z[1]:
+            res += '{}'.format(z[0])
+    return res.strip()
 
 
 def palindrome(pali):
-    a = len(pali)
-    if a % 2 == 0:
-        a = a / 2
+    if pali == pali[::-1]:
+        return 'Палиндром'
     else:
-        a = (a - 1) / 2
-    b = pali[:a]
-    c = pali[:(-a - 1)]
-    if b == c:
-        return 'палиндром'
-    else:
-        return 'не палиндром'
+        return 'Не палиндром'
 
 
 def find_letter(where, letter):
-    a = where.split()
-    b = []
-    for n in a:
-        if n[0] == letter:
-            b.append (n)
-    return ' '.join(b)
+    splitter = where.split()
+    res = []
+    for s in splitter:
+        if s[0].lower() == letter:
+            res.append (s)
+    return ' '.join(res)
 
 
 def mix_words(just_string):
-    a = just_string.split(' ')
-    random.shuffle(a)
-    return ' '.join(a)
+    splitter = just_string.split(' ')
+    random.shuffle(splitter)
+    return ' '.join(splitter)
 
 
 print letters("Trees Are So Kind")

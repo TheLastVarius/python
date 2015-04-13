@@ -2,19 +2,20 @@
 import math
 NOMINALS = [100, 50, 20, 10, 5, 1]
 
+
 def multipliers(number):
     i = 2
-    j = [1]
+    mult = [1]
     while i**2 <= number:
         if number % i == 0:
             while number % i == 0:
                 number = number / i
-                j.append (i)
+                mult.append (i)
             i = i + 1
         else:
             i = i + 1
-    j.append (number)
-    return j
+    mult.append (number)
+    return mult
 
 
 def equation(a, b, c):
@@ -37,6 +38,7 @@ def simple(number):
             return "Число простое"
     return "Число составное"
 
+
 # atm uses only 100, 50, 20, 10, 5 and 1 notes.
 def atm(summ):
     result = []
@@ -44,12 +46,12 @@ def atm(summ):
     for n in NOMINALS:
         result.append (summ // n)
         summ = summ % n
-    for r in result:
-        if r != 0:    
-            res += '{0} по {1} '.format(r, NOMINALS[result.index(r)])
+        zipped = zip(result,NOMINALS)
+    for z in zipped:
+        if z[0] != 0:
+            res += '{0} по {1} '.format(z[0], z[1])
     return res.strip()
 
-print atm(280)
 
 print multipliers(30030)
 
