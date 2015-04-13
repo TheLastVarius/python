@@ -19,8 +19,8 @@ def multipliers(number):
 
 def equation(a, b, c):
     D = b**2 - 4*a*c
-    sqrtD = math.sqrt(D)
     if D >= 0:
+        sqrtD = math.sqrt(D)
         x1 = (-b + sqrtD) / (2 * a)
         x2 = (-b - sqrtD) / (2 * a)
         return x1, x2
@@ -40,14 +40,14 @@ def simple(number):
 # atm uses only 100, 50, 20, 10, 5 and 1 notes.
 def atm(summ):
     result = []
-    a = ''
+    res = ''
     for n in NOMINALS:
         result.append (summ // n)
         summ = summ % n
-    for n in xrange(len(result)):
-        if result[n] != 0:    
-            a += '%d по %d ' % (result[n], NOMINALS[n])
-    return a
+    for r in result:
+        if r != 0:    
+            res += '{0} по {1} '.format(r, NOMINALS[result.index(r)])
+    return res.strip()
 
 print atm(280)
 
