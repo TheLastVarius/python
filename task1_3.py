@@ -5,7 +5,7 @@ def repetitive(catalog):
     result = []
     for element in catalog:
         if catalog.count(element) > 1 and element not in result:
-            result.append (element)
+            result.append(element)
     return ' и '.join(['{}'.format(res) for res in result])
 
 

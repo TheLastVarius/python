@@ -23,12 +23,12 @@ def find_letter(where, letter):
     res = []
     for s in splitter:
         if s[0].lower() == letter:
-            res.append (s)
+            res.append(s)
     return ' '.join(res)
 
 
 def mix_words(just_string):
-    splitter = just_string.split(' ')
+    splitter = just_string.split()
     random.shuffle(splitter)
     return ' '.join(splitter)
 

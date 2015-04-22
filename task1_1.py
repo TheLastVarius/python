@@ -10,11 +10,11 @@ def multipliers(number):
         if number % i == 0:
             while number % i == 0:
                 number = number / i
-                mult.append (i)
+                mult.append(i)
             i = i + 1
         else:
             i = i + 1
-    mult.append (number)
+    mult.append(number)
     return mult
 
 
@@ -44,7 +44,7 @@ def atm(summ):
     result = []
     res = ''
     for n in NOMINALS:
-        result.append (summ // n)
+        result.append(summ // n)
         summ = summ % n
         zipped = zip(result,NOMINALS)
     for z in zipped:
