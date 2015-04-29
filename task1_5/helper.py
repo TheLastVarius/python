@@ -16,10 +16,10 @@ if args.time:
 if args.date:
     print datetime.datetime.now().date().strftime('%d.%m.%Y')
 if args.uname:
-    subprocess.call(['id','-nu'])
+    print os.getlogin()
 if args.version:
     print sys.version
 if args.tree:
-    subprocess.call('ls')
-else:
-    print 'Run with -h for help'
+    print os.listdir(os.getcwd())
+if len(sys.argv) == 1:
+    helper.print_help()
