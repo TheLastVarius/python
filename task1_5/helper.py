@@ -21,3 +21,5 @@ if args.version:
     print sys.version
 if args.tree:
     subprocess.call('ls')
+else:
+    print 'Run with -h for help'
