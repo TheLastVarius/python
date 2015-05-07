@@ -3,6 +3,7 @@ import datetime
 import subprocess
 import sys
 import argparse
+import os
 
 helper = argparse.ArgumentParser()
 helper.add_argument('-t', '--time', help='displays the current time', action="store_true")
