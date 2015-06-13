@@ -46,64 +46,87 @@ for line in source:
 
 source.close()
 
-new_root_childrens = root.childrens[::-1]
-new_node_childrens = node.childrens[::-1]
+new_root_childrens = []
+new_node_childrens = []
 
+root_catalog = []
+root_catalog.append(root.data)
 new_root = []
-new_root.append(root.data)
 
-for element in new_root:
-    if re.search(r'html',element):
-        root.data = '<html>\n'
-        root2 = TreeNode('</html>',None,0)
-    elif re.search(r'head',element):
-        root.data = '<head>\n'
-        root2 = TreeNode('</head>',None,0)
-    elif re.search(r'title',element):
-        root.data = '<title>\n'
-        root2 = TreeNode('</title>',None,0)
+for element in node.childrens:
+    if re.search('html', element):
+        new_node_childrens.append(element.replace('html','<html>'))
+    elif re.search('head', element):
+        new_node_childrens.append(element.replace('head','<head>'))
+    elif re.search('body', element):
+        new_node_childrens.append(element.replace('body','<body>'))
+    elif re.search('title', element):
+        new_node_childrens.append(element.replace('title','<title>'))
+    else:
+        new_node_childrens.append(element)
 
-for element in new_root_childrens:
-    if re.search(r'head',element):
-        node = TreeNode('    </head>\n',root,1)
-        root.add_child(node)
-    elif re.search(r'title',element):
-        node = TreeNode('    </title>\n',root,1)
-        root.add_child(node)
-    elif re.search(r'html',element):
-        node = TreeNode('    </html>\n',root,1)
-        root.add_child(node)
+for element in root.childrens:
+    if re.search('html', element):
+        new_root_childrens.append(element.replace('html','<html>'))
+    elif re.search('head', element):
+        new_root_childrens.append(element.replace('head','<head>'))
+    elif re.search('body', element):
+        new_root_childrens.append(element.replace('body','<body>'))
+    elif re.search('title', element):
+        new_root_childrens.append(element.replace('title','<title>'))
+    else:
+        new_root_childrens.append(element)
 
-node.childrens = new_node_childrens[::-1]
-
-for element in new_node_childrens:
-    if re.search(r'title',element):
-        node_2 = TreeNode('        </title>\n',node,2)
-        node.add_child(node_2)
-    elif re.search(r'html',element):
-        node_2 = TreeNode('        </html>\n',node,2)
-        node.add_child(node_2)
-    elif re.search(r'head',element):
-        node_2 = TreeNode('        </head>\n',node,2)
-        node.add_child(node_2)
+for element in root_catalog:
+    if re.search('html', element):
+        new_root.append(element.replace('html','<html>'))
+    elif re.search('head', element):
+        new_root.append(element.replace('head','<head>'))
+    elif re.search('body', element):
+        new_root.append(element.replace('body','<body>'))
+    elif re.search('title', element):
+        new_root.append(element.replace('title','<title>'))
+    else:
+        new_root.append(element)
 
 output = open('new_html.txt', 'w')
 
-output.writelines('%s' %element for element in root.data)
-output.writelines('%s' %element for element in root.childrens)
-output.writelines('%s' %element for element in node.childrens)
-output.writelines('%s' %element for element in root2.data)
+output.writelines('%s' %element for element in new_root)
+output.writelines('%s' %element for element in new_root_childrens)
+output.writelines('%s' %element for element in new_node_childrens)
 
 output.close()
 
-source_2 = open('new_html.txt')
-output_2 = open('finaly_html.txt', 'w')
+output_2 = open('new_html.txt', 'a')
 
-for line in source_2:
-    if re.search('head\n', line):
-        output_2.write(re.sub('head\n', '<head>\n', line))
-    elif re.search('title\n', line):
-        output_2.write(re.sub('title\n', '<title>\n', line))
-    else:
-        output_2.write(line)
+for element in node.childrens:
+    if re.search('html', element):
+        output_2.writelines(element.replace('html','</html>'))
+    if re.search('head', element):
+        output_2.writelines(element.replace('head','</head>'))
+    if re.search('body', element):
+        output_2.writelines(element.replace('body','</body>'))
+    if re.search('title', element):
+        output_2.writelines(element.replace('title','</title>'))
 
+for element in root.childrens:
+    if re.search('html', element):
+        output_2.writelines(element.replace('html','</html>'))
+    if re.search('head', element):
+        output_2.writelines(element.replace('head','</head>'))
+    if re.search('body', element):
+        output_2.writelines(element.replace('body','</body>'))
+    if re.search('title', element):
+        output_2.writelines(element.replace('title','</title>'))
+
+for element in root_catalog:
+    if re.search('html', element):
+        output_2.writelines(element.replace('html','</html>'))
+    if re.search('head', element):
+        output_2.writelines(element.replace('head','</head>'))
+    if re.search('body', element):
+        output_2.writelines(element.replace('body','</body>'))
+    if re.search('title', element):
+        output_2.writelines(element.replace('title','</title>'))
+
+output_2.close()
