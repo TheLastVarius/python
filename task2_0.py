@@ -58,8 +58,6 @@ for element in node.childrens:
         new_node_childrens.append(element.replace('html','<html>'))
     elif re.search('head', element):
         new_node_childrens.append(element.replace('head','<head>'))
-    elif re.search('body', element):
-        new_node_childrens.append(element.replace('body','<body>'))
     elif re.search('title', element):
         new_node_childrens.append(element.replace('title','<title>'))
     else:
@@ -70,8 +68,6 @@ for element in root.childrens:
         new_root_childrens.append(element.replace('html','<html>'))
     elif re.search('head', element):
         new_root_childrens.append(element.replace('head','<head>'))
-    elif re.search('body', element):
-        new_root_childrens.append(element.replace('body','<body>'))
     elif re.search('title', element):
         new_root_childrens.append(element.replace('title','<title>'))
     else:
@@ -82,8 +78,6 @@ for element in root_catalog:
         new_root.append(element.replace('html','<html>'))
     elif re.search('head', element):
         new_root.append(element.replace('head','<head>'))
-    elif re.search('body', element):
-        new_root.append(element.replace('body','<body>'))
     elif re.search('title', element):
         new_root.append(element.replace('title','<title>'))
     else:
@@ -104,8 +98,6 @@ for element in node.childrens:
         output_2.writelines(element.replace('html','</html>'))
     if re.search('head', element):
         output_2.writelines(element.replace('head','</head>'))
-    if re.search('body', element):
-        output_2.writelines(element.replace('body','</body>'))
     if re.search('title', element):
         output_2.writelines(element.replace('title','</title>'))
 
@@ -114,8 +106,6 @@ for element in root.childrens:
         output_2.writelines(element.replace('html','</html>'))
     if re.search('head', element):
         output_2.writelines(element.replace('head','</head>'))
-    if re.search('body', element):
-        output_2.writelines(element.replace('body','</body>'))
     if re.search('title', element):
         output_2.writelines(element.replace('title','</title>'))
 
@@ -124,8 +114,6 @@ for element in root_catalog:
         output_2.writelines(element.replace('html','</html>'))
     if re.search('head', element):
         output_2.writelines(element.replace('head','</head>'))
-    if re.search('body', element):
-        output_2.writelines(element.replace('body','</body>'))
     if re.search('title', element):
         output_2.writelines(element.replace('title','</title>'))
 
